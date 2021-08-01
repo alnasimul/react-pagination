@@ -15,6 +15,10 @@ function App() {
 
   //console.log(pagesVisited);
 
+  
+
+  console.log('orginal: ',posts)
+
   const displayPosts = posts.slice(pagesVisited, pagesVisited + postsPerPage)
    
 
@@ -29,7 +33,8 @@ function App() {
       fetch('https://jsonplaceholder.typicode.com/posts')
       .then( res => res.json() )
       .then( data => {
-        setPosts(data)
+        const reversedData = [...data.reverse()]
+        setPosts(reversedData)
         setLoading(false)
       })
   },[])
